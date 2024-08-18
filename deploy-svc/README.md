@@ -10,7 +10,7 @@ Microservices
 7- ProductCatalogService - 3550
 8- RecommendationService - 8080
 9- CartService - 7070
-10- Rredis
+10- Rredis -6379
 11- Frontend - 8080
 
 # STEPS
@@ -55,8 +55,9 @@ try this, to verify cluster is running fine
 ` kubectl get nodes `
 
 deploy and get your application running
+` kubectl create ns microservices `
 
-` kubectl apply -f deploy-svc/ `
+` kubectl apply -f deploy-svc/  -n microservices`
 
 ` kubectl get pods `
 

@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 
+  name: emailservice
 spec:
   type: ClusterIP
   selector:
@@ -37,7 +37,7 @@ spec:
       port: 8080
       targetPort: 8080
 
-  ---
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -56,7 +56,7 @@ spec:
         app: recommendationservice
     spec:
       containers:
-      - name:  serviceservice
+      - name: service
         image: 
         ports:
         - containerPort: 8080
@@ -80,8 +80,7 @@ spec:
       port: 8080
       targetPort: 8080
 
-  ---
-
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -100,7 +99,7 @@ spec:
         app: productcatalogservice
     spec:
       containers:
-      - name:  serviceservice
+      - name: service
         image: 
         ports:
         - containerPort: 3550
@@ -121,8 +120,7 @@ spec:
       port: 3550
       targetPort: 3550
 
-  ---
-
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -140,7 +138,7 @@ spec:
         app: paymentservice
     spec:
       containers:
-      - name:  service
+      - name: service
         image: 
         ports:
         - containerPort: 50051
@@ -161,15 +159,13 @@ spec:
       port: 50051
       targetPort: 50051
 
-  ---
-
-
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shippingservice
   labels:
-    app: 
+    app: shippingservice
 spec:
   replicas: 1
   selector:
@@ -181,7 +177,7 @@ spec:
         app: shippingservice
     spec:
       containers:
-      - name:  service
+      - name: service
         image: 
         ports:
         - containerPort: 80
@@ -202,7 +198,7 @@ spec:
       port: 50051
       targetPort: 50051
 
-  ---
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -221,7 +217,7 @@ spec:
         app: adservice
     spec:
       containers:
-      - name:  service
+      - name: service
         image: 
         ports:
         - containerPort: 9555
@@ -242,7 +238,7 @@ spec:
       port: 9555
       targetPort: 9555
 
-  ---
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -301,7 +297,7 @@ spec:
       port: 5050
       targetPort: 5050
 
-  ---
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -341,7 +337,7 @@ spec:
       port: 7000
       targetPort: 7000
 
-  ---
+---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -383,8 +379,7 @@ spec:
       port: 7070
       targetPort: 7070
 
-  ---
-
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -426,8 +421,7 @@ spec:
       port: 6379
       targetPort: 6379
 
-  ---
-
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -478,7 +472,7 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: Nodeport
+  type: NodePort
 
   selector:
     app.kubernetes.io/name: 
@@ -486,4 +480,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-      nodePort: 30007
+      nodePort: 30005
+      
