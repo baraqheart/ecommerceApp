@@ -6,11 +6,11 @@ a. liveness probe is used to know and handle crashed containers using the code,
    after the pod has been create
    
    ```
-   InitialDelaySeconds: 5
-   livenessProbe:
-     periodSeconds: 5 
-     exec: 
-       command: ["/bin/grpc_health", "-addr=:8080"]
+        livenessProbe:
+          InitialDelaySeconds: 5
+          periodSeconds: 5 
+          exec: 
+          command: ["/bin/grpc_health", "-addr=:8080"]
    ```
     
 b. Readiness probe helps kubernetes know the app is ready to recieve traffic during startup process
