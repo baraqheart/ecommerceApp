@@ -465,7 +465,7 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: Loadbalancer
+  type: LoadBalancer
 
   selector:
     app.kubernetes.io/name: 

@@ -72,6 +72,8 @@ verify that helm is installed
 ` helm --version `
 
 
+` helmfile sync`
+
 
 
 

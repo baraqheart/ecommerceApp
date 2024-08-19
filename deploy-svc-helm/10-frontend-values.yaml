@@ -1,0 +1,13 @@
+appName: frontend
+appTag: v0.2.3
+appImage: gcr.io/google-samples/microservices-demo/frontend
+appReplica: 1
+containerName: service
+containerPort: 8080
+containerEnvVars: 
+ - name: PORT
+   value: "8080"
+ 
+
+serviceType: ClusterIP
+servicePort: 8080

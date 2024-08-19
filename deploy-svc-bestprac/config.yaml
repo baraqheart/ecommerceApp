@@ -20,19 +20,24 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:8080"]
+          tcpSocket:
+            port: 8080
         readinesProbe:
           initialDelayseconds: 5 
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:8080"]
+          tcpSocket:
+            port: 8080
         ports:
         - containerPort: 8080
         env:
         - name: PORT
           value: "8080"
-
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
 ---
 apiVersion: v1
 kind: Service
@@ -70,13 +75,13 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:8080"]
+          tcpSocket:
+            port: 8080
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:8080"]
+          tcpSocket:
+            port: 8080
         ports:
         - containerPort: 8080
         env:
@@ -85,6 +90,13 @@ spec:
 
         - name: PRODUCT_CATALOG_SERVICE_ADDR
           value: "productcatalogservice:3550"
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
 
 ---
 apiVersion: v1
@@ -122,18 +134,25 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:3550"]
+          tcpSocket:
+            port: 3550
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:3550"]
+          tcpSocket:
+            port: 3550
         ports:
         - containerPort: 3550
         env:
         - name: PORT
           value: "8080"
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"  
 
 ---
 apiVersion: v1
@@ -171,18 +190,25 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:50051"]
+          tcpSocket:
+            port: 50051
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:50051"]
+          tcpSocket:
+            port: 50051
         ports:
         - containerPort: 50051
         env:
         - name: PORT
           value: "8080"
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
 
 ---
 apiVersion: v1
@@ -220,18 +246,25 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:50051"]
+          tcpSocket:
+            port: 50051
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:50051"]
+          tcpSocket:
+             port: 50051
         ports:
         - containerPort: 50051
         env:
         - name: PORT
           value: "8080"
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"  
 
 ---
 apiVersion: v1
@@ -269,18 +302,25 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:9555"]
+          tcpSocket:
+            port: 9555
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:9555"]
+          tcpSocket:
+            port: 9555
         ports:
         - containerPort: 9555
         env:
         - name: PORT
           value: "8080"
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
 
 ---
 apiVersion: v1
@@ -318,13 +358,13 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:5050"]
+          tcpSocket:
+            port: 5050
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:5050"]
+          tcpSocket:
+            port: 5050
         ports:
         - containerPort: 5050
         env:
@@ -349,6 +389,13 @@ spec:
         - name: CART_SERVICE_ADDR
           value: "cartservice:7070"
      
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
 ---
 apiVersion: v1
 kind: Service
@@ -385,18 +432,25 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:7000"]
+          tcpSocket:
+            port: 7000
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:7000"]        
+          tcpSocket:
+            port: 7000        
         ports:
         - containerPort: 7000
         env:
         - name: PORT
           value: "8080"
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
 
 ---
 apiVersion: v1
@@ -434,13 +488,13 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:7070"]
+          tcpSocket:
+            port: 7070
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:7070"]
+          tcpSocket:
+            port: 7070
         ports:
         - containerPort: 7070
         env:
@@ -448,6 +502,13 @@ spec:
           value: "7070"
         - name: REDIS-CART
           value: "redis-cart:6379"
+
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
 
 ---
 apiVersion: v1
@@ -485,13 +546,21 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:6379"]
+          tcpSocket:
+            port: 6379
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:6379"]
+          tcpSocket:
+            port: 6379
+        env:
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
+
         volumeMounts: 
         - name: redis-data
           mountPath: /data
@@ -537,13 +606,13 @@ spec:
         livenessProbe:
           InitialDelaySeconds: 5
           periodSeconds: 5 
-          exec: 
-            command: ["/bin/grpc_health", "-addr=:8080"]
+          tcpSocket:
+            port: 8080
         readinesProbe:
           initialDelayseconds: 5
           periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health", "-addr=:8080"]
+          tcpSocket:
+            port: 8080
         ports:
         - containerPort: 8080
         
@@ -569,13 +638,20 @@ spec:
         - name: CART_SERVICE_ADDR
           value: "cartservice:7070" 
 
+        - name: DISBALE_TRACING
+          value: "1"
+        - name: DISBALE_PROFILER
+          value: "1"
+        - name: DISBALE_DEBUGGER
+          value: "1"
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: frontend
 spec:
-  type: Loadbalancer
+  type: LoadBalancer
 
   selector:
     app.kubernetes.io/name: 
