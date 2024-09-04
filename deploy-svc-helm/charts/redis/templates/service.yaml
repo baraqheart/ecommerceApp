@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .values.appName }}
+  name: {{ .Values.appName }}
 spec:
   selector:
-    app.kubernetes.io/name: {{ .values.appName }}
+    app.kubernetes.io/name: {{ .Values.appName }}
   ports:
     - protocol: TCP
-      port: {{ .values.servicePort }}
-      targetPort: {{ .values.containerPort }}
+      port: {{ .Values.servicePort }}
+      targetPort: {{ .Values.containerPort }}
